@@ -1,7 +1,3 @@
-# Kafka docker image
-
-These images are part of the bigdata docker image series. All of the images use the same [base docker image](https://github.com/elek/docker-bigdata-base) which contains advanced configuration loading. For more detailed instruction see the [README](https://github.com/elek/docker-bigdata-base/blob/master/README.md) in the docker-bigdata-base repository.
-
 ## Configuration loading
 
 The containers supports multiple configuration loading mechanism. (All of the configuration loading is defined in the [base-docker](https://github.com/elek/docker-bigdata-base) image. The configuration methods are stored in the `/opt/configurer` and `/opt/configuration` directory and could be selected by setting the environment variable `CONFIG_TYPE`
@@ -97,65 +93,3 @@ execute=.*\.init
  * `CONSUL_PATH` defines the root of the subtree where the configuration are downloaded from. The root could also contain a configuration `config.ini`. Default is `conf`
 
  *  `CONSUL_KEY` is optional. It defines a subdirectory to download the the config files. If both `CONSUL_PATH` and `CONSUL_KEY` are defined, the config files will be downloaded from `$CONSUL_PATH/$CONSUL_KEY` but the config file will be read from `$CONSUL_PATH/config.ini`
-
-## Running
-
-Using the image depends from the configuration loading and the exact use case. You can find multiple examples in [this](https://github.com/elek/bigdata-docker) repository to use the images:
-
-* on the local machine using docker-compose
-* on remote cluster using ansible 
-* on remote cluster and local macine with using docker-compose downloaded from the consul image. 
-
-
-
-## Versioning policy
-
-  The _latest_ tag points to the latest configuration loading and the latest stable apache version.
-
-  The _testing_ usually points to a cutting edge developer snapshot or RC/alpha release but expected to be working. 
-
-  If there is plain version tag without prefix it is synchronized with the version of the original apache software.
-
-  It there is a prefix (eg. HDP) it includes a specific version from a specific distribution.
-
-  As the configuration loading in the base image is constantly evolving even the tags of older releases may be refreshed over the time.
-
-## Local build
-
-Custom version could be built by running `branch.sh` and `localbuild.sh`
-
-First set DOCKER_TAG environment variable:
-
-```
-export DOCKER_TAG=3.0.0-alpha3-SNAPSHOT
-```
-
-After that you can modify the base image to download tar file from a custom location:
-
-```
-./branch.sh http://localhost/apache-hadoop.tar.gz
-```
-
-If url is replaced, you can build the images:
-
-```
-./localbuild.sh
-```
-
-After the build, you can use the images with the specified tag:
-
-```
-docker run .... elek/image_name:$DOCKER_TAG
-```
-
-Note: if you have tar file locally, you can server it with a simple http server:
-
-With python3:
-```
-python3 -m http.server
-```
-
-With python2:
-```
-python -m SimpleHTTPServer
-```
