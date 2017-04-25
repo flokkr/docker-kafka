@@ -1,4 +1,4 @@
-FROM elek/bigdata-base:13
+FROM elek/bigdata-base:15
 ENV CONF_DIR /opt/kafka/config
 ADD defaults/* defaults/
 ADD url .
