@@ -1,0 +1,19 @@
+version: "2"
+services:
+  zookeeper:
+      image: flokkr/zookeeper
+      hostname: zookeeper
+      environment:
+        ZOO.CFG_clientPort: 2181
+        ZOO.CFG_dataDir: /tmp/zookeeper
+  kafka:
+      hostname: kafka
+      image: flokkr/kafka
+      environment:
+         SERVER.PROPERTIES_zookeeper.connect: zookeeper:2181
+  kafkapublisher:
+     image: flokkr/kafka
+     command: ["bash","-c","'while sleep 5; do date | ./bin/kafka-console-producer.sh --topic test --broker-list kafka:9092; done'"]
+  kafkasubscriber:
+     image: flokkr/kafka
+     command: ["./bin/kafka-console-consumer.sh --topic test2 --bootstrap-server kafka:9092"]
