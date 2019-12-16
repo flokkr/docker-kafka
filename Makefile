@@ -1,11 +1,11 @@
 
 
 VERSION ?= latest
-URL ?= "http://xenia.sote.hu/ftp/mirrors/www.apache.org/kafka/0.10.2.1/kafka_2.11-0.10.2.1.tgz"
+URL ?= "https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=/kafka/2.1.0/kafka_2.12-2.1.0.tgz"
 
 build:
 	echo $(URL) > url
-	docker build -t flokkr/kafka:$(VERSION) .
+	docker build --build-arg URL=$(URL) -t flokkr/kafka:$(VERSION) .
 
 deploy:
 	docker push flokkr/kafka:$(VERSION)
