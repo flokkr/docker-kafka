@@ -1,0 +1,8 @@
+name: kafka
+basetag: 36
+urlpath: kafka/%s/kafka_2.12-%s.tgz
+containers:
+   - flokkr/kafka
+git: https://github.com/flokkr/docker-kafka
+versions:
+  - 2.5.0
