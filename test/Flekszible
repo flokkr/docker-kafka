@@ -1,0 +1,19 @@
+source:
+- path: ..
+- url: github.com/flokkr/docker-zookeeper
+import:
+- path: zookeeper
+  transformations:
+  - type: image
+    image: flokkr/zookeeper:3.6.1
+  - type: zookeeper/scale
+    replicas: 3
+- path: kafka
+  transformations:
+  - type: image
+    image: flokkr/kafka:2.5.0
+- path: kafka-demo
+  transformations:
+  - type: image
+    image: flokkr/kafka:2.5.0
+   
