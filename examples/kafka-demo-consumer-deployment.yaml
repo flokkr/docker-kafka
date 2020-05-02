@@ -31,8 +31,13 @@ spec:
         volumeMounts:
         - mountPath: /scripts
           name: scripts
+        - name: smoketest
+          mountPath: /opt/smoketest
       volumes:
       - name: scripts
         configMap:
           defaultMode: 493
           name: scripts
+      - name: smoketest
+        hostPath:
+          path: /home/elek/projects/flokkr/docker-kafka/examples/smoketest

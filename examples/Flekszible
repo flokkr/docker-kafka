@@ -1,7 +1,9 @@
 source:
 - path: ..
 - url: github.com/flokkr/docker-zookeeper
+- url: github.com/flokkr/infra-flekszible
 import:
+- path: util
 - path: zookeeper
   transformations:
   - type: image

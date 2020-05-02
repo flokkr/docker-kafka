@@ -31,6 +31,12 @@ spec:
         args:
         - kafka-server-start.sh
         - /opt/kafka/config/server.cfg
+        volumeMounts:
+        - name: smoketest
+          mountPath: /opt/smoketest
       volumes:
       - name: data
         emptyDir: {}
+      - name: smoketest
+        hostPath:
+          path: /home/elek/projects/flokkr/docker-kafka/examples/smoketest
