@@ -5,4 +5,6 @@ containers:
    - flokkr/kafka
 git: https://github.com/flokkr/docker-kafka
 versions:
+  - 2.7.0
+  - 2.6.0
   - 2.5.0
