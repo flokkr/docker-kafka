@@ -1,9 +1,7 @@
 source:
 - path: ..
 - url: github.com/flokkr/docker-zookeeper
-- url: github.com/flokkr/infra-flekszible
 import:
-- path: util
 - path: zookeeper
   transformations:
   - type: image
@@ -11,11 +9,5 @@ import:
   - type: zookeeper/scale
     replicas: 3
 - path: kafka
-  transformations:
-  - type: image
-    image: flokkr/kafka:2.5.0
 - path: kafka-demo
-  transformations:
-  - type: image
-    image: flokkr/kafka:2.5.0
    
